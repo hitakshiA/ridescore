@@ -3,7 +3,6 @@ import { useStore } from '../../store';
 export function OrientationDisplay() {
   const { roll, pitch, yaw } = useStore(s => s.orientation);
   const roadQuality = useStore(s => s.roadQuality);
-  const ser = useStore(s => s.ser);
   const penaltyFactor = useStore(s => s.penaltyFactor);
 
   return (

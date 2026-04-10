@@ -51,10 +51,13 @@ export class PlaybackEngine {
   private potholeOverlay: Float64Array | null = null;
   private potholeOffset = 0;
 
-  constructor(
-    private data: TripData,
-    private groundTruth: GroundTruthEvent[],
-  ) {}
+  private data: TripData;
+  private groundTruth: GroundTruthEvent[];
+
+  constructor(data: TripData, groundTruth: GroundTruthEvent[]) {
+    this.data = data;
+    this.groundTruth = groundTruth;
+  }
 
   get currentTimeSec(): number {
     return this.sampleIndex / SAMPLE_RATE;

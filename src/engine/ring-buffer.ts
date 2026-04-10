@@ -4,7 +4,10 @@ export class RingBuffer {
   private head = 0;
   private _count = 0;
 
-  constructor(public readonly capacity: number) {
+  readonly capacity: number;
+
+  constructor(capacity: number) {
+    this.capacity = capacity;
     this.buffer = new Float64Array(capacity);
   }
 

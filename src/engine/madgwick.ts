@@ -17,10 +17,13 @@ export class MadgwickAHRS {
   q2 = 0;
   q3 = 0;
 
-  constructor(
-    private beta: number = MADGWICK_BETA,
-    private dt: number = DT,
-  ) {}
+  private beta: number;
+  private dt: number;
+
+  constructor(beta: number = MADGWICK_BETA, dt: number = DT) {
+    this.beta = beta;
+    this.dt = dt;
+  }
 
   /** Process one IMU sample. Gyro in rad/s, accel in m/s². */
   update(gx: number, gy: number, gz: number, ax: number, ay: number, az: number): void {
