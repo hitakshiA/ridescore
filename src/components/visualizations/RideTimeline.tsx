@@ -162,27 +162,25 @@ export function RideTimeline({ height = 120 }: { height?: number }) {
       ctx.fillText(scoreText, bikeX, pillY + 17);
       ctx.textAlign = 'left';
 
-      // ── Time labels ──
+      // ── Time labels — below road ──
+      const timeY = rY + rH / 2 + 16;
       ctx.fillStyle = '#52525b';
       ctx.font = '11px IBM Plex Mono';
       ctx.textAlign = 'left';
-      ctx.fillText('0:00', rL, h - 6);
+      ctx.fillText('0:00', rL, timeY);
       ctx.textAlign = 'center';
       const m = Math.floor(currentTime / 60);
       const s = Math.floor(currentTime % 60);
-      ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, bikeX, h - 6);
+      ctx.fillText(`${m}:${s.toString().padStart(2, '0')}`, bikeX, timeY);
       ctx.textAlign = 'right';
-      ctx.fillText(`${Math.floor(totalDuration / 60)}:${(totalDuration % 60).toString().padStart(2, '0')}`, rR, h - 6);
+      ctx.fillText(`${Math.floor(totalDuration / 60)}:${(totalDuration % 60).toString().padStart(2, '0')}`, rR, timeY);
 
-      // ── Legend ──
+      // ── Legend — at bottom left ──
       ctx.textAlign = 'left';
-      ctx.font = '11px Space Grotesk';
-      ctx.fillStyle = '#f87171'; ctx.fillText('● Hard', 12, 15);
-      ctx.fillStyle = '#fbbf24'; ctx.fillText('● Warning', 68, 15);
-      ctx.fillStyle = '#4ade80'; ctx.fillText('✓ Verified', 148, 15);
-      ctx.fillStyle = '#52525b';
-      ctx.textAlign = 'right';
-      ctx.fillText('Real-time event detection from IMU data', w - 12, 15);
+      ctx.font = '10px Space Grotesk';
+      ctx.fillStyle = '#f87171'; ctx.fillText('● Hard', rL, h - 6);
+      ctx.fillStyle = '#fbbf24'; ctx.fillText('● Warning', rL + 50, h - 6);
+      ctx.fillStyle = '#4ade80'; ctx.fillText('✓ Verified', rL + 120, h - 6);
       ctx.textAlign = 'left';
 
       rafId = requestAnimationFrame(draw);
